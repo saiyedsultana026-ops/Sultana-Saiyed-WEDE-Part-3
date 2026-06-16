@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evolve Tennis Academy - Enquiry Form</title>
+    <meta name="description" content="Register your slot or make an enquiry at Evolve Tennis Academy. Professional tennis coaching programs for all ages in Port Elizabeth.">
+    <meta name="keywords" content="tennis enrollment, tennis registration Port Elizabeth, Danie Van Zyl coaching, tennis lessons signup">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!--Header section same across all pages-->
+    <header class="site-header">
+        <div class="header-main-row">
+            <img src="images/evolve tennis academy logo.jpg" alt="Evolve Tennis Academy Logo" class="site-logo">
+            <h1 class="site-title">Evolve Tennis Academy</h1>
+        </div>
+
+        <marquee class="announcement-ticker">PRESTIGE TENNIS COACHING FOR YOUNG AND OLD</marquee>
+        <nav class="navigation-bar">
+            <table>
+                <tr>
+                    <td><a href="index.html">Home Page</a></td>
+                    <td><a href="about.html">About Us</a></td>
+                    <td><a href="services.html">Services</a></td>
+                    <td><a href="enquiry.html" class="active-page">Enquiry</a></td>
+                    <td><a href="contact.html">Contact Us</a></td>
+                </tr>
+            </table>
+        </nav>
+<!--SEO -->
+<form class="header-search-form" id="siteSearchEngine">
+    <div class="search-input-wrapper">
+        <input type="search" id="searchInputField" class="site-search-input" placeholder="Search this page layout..." required>
+        <button type="submit" class="btn-search-submit">Search</button>
+    </div>
+</form>
+    </header>
+
+    <main class="page-wrapper">
+        <section class="enquiry-split-container">
+            <!--Capsule heading-->
+            <div class="enquiry-form-side" id="enquiryFormViewport">
+                <h2 class="capsule-heading">Enquiry Form</h2>
+                
+                <form action="https://formspree.io/f/xaqzkozb" method="POST" class="academy-form" id="tennisEnquiryForm">
+                    <p class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required placeholder="Your Name">
+                    </p>
+
+                    <p class="form-group">
+                        <label for="surname">Surname:</label>
+                        <input type="text" id="surname" name="surname" required placeholder="Your Surname">
+                    </p>
+
+                    <p class="form-group">
+                        <label for="phone">Phone Number:</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="e.g. 073 298 6616">
+                    </p>
+
+                    <p class="form-group">
+                        <label for="email">Email Address:</label>
+                        <input type="email" id="email" name="_replyto" required placeholder="name@example.com">
+                    </p>
+
+                    <p class="form-group">
+                        <label for="club">Which Club</label>
+                        <select id="club" name="club">
+                            <option value="Hoërskool Frameby Courts">Hoërskool Frameby Courts</option>
+                            <option value="Wembley Tennis Club">Wembley Tennis Club</option>
+                            <option value="Sunridge Primary School">Sunridge Primary School</option>
+                            <option value="Harvest Christian School">Harvest Christian School</option>
+                        </select>
+                    </p>
+
+                    <p class="form-group">
+                        <label for="level">Current Player Level:</label>
+                        <select id="level" name="level">
+                            <option value="Beginner">Beginner</option>
+                            <option value="Basics">Basics</option>
+                            <option value="Intermediate">Intermediate</option>
+                            <option value="Advanced">Advanced</option>
+                        </select>
+                    </p>
+
+                    <p class="form-group">
+                        <label for="coach">Select a Coach:</label>
+                        <select id="coach" name="coach">
+                            <option value="Danie Van Zyl">Danie Van Zyl</option>
+                            <option value="Kianu Jonker">Kianu Jonker</option>
+                            <option value="Leila Nel">Leila Nel</option>
+                            <option value="Xander Shawn Elkington">Xander Shawn Elkington</option>
+                            <option value="Nathan Filen">Nathan Filen</option>
+                            <option value="Ethan Gibbons">Ethan Gibbons</option>
+                            <option value="Tinashe Chirare">Tinashe Chirare</option>
+                        </select>
+                    </p>
+
+                    <p class="form-submit-row">
+                        <button type="submit" class="btn-submit">Submit Enquiry</button>
+                    </p>
+                </form>
+            </div>
+            <!--picture nect to form-->
+            <div class="enquiry-image-side">
+                <img src="images/evolve Tennis Academy enqury page.jpg" alt="Evolve Tennis Academy Court Training" class="enquiry-side-img">
+            </div>
+
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; by <i>Better-In Marketing</i></p>
+    </footer>
+    <script src="js/main.js"></script>
+</body>
+</html>
