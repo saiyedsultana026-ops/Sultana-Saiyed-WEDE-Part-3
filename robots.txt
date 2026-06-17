@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://saiyedsultana026-ops.github.io/Sultana-Saiyed-WEDE-Part-3/sitemap.xml
