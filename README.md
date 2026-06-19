@@ -5,7 +5,7 @@
 **Module:** WEDE5020 - Web Development
 
 ## Project Overview
-Evolve Tennis Academy was founded by Danie van Zyl in 2021. With over 14 years of coaching expertise, the academy operates 
+Evolve Tennis Academy was founded by Danie van Zyl in 2021. With over 14 years of coaching experience, the academy operates 
 in two major South African hubs: Port Elizabeth and Johannesburg. This website serves as a professional digital
 platform for the academy to showcase its prestige coaching services, qualified SATA-registered international and local coaches.
 
