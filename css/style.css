@@ -872,57 +872,78 @@ body {
     0% { transform: scale(1); }
     100% { transform: scale(1.03); }
 }
-/*-------------------------------------------------------------------------------------------------------------------------------*/
-/*Animation on the last page */
-.animation-section {
-    margin-top: 40px;
-    padding: 20px;
-    background-color: #222222;
-    border-radius: 8px;
-}
 
-.tennis-animation-container {
-    width: 100%;
-    height: 150px;
-    background-color: #4cbb17; /* tennis court */
-    position: relative;
-    border: 3px solid #ffffff; /*lines on th court*/
-    border-radius: 4px;
-    overflow: hidden;
-}
-.tennis-animation-container::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 0;
-    width: 4px;
-    height: 100%;
-    background-color: #ffffff;
-}
-.animated-racket {
-    position: absolute;
-    top: 40%;
-    font-size: 2.5rem;
-    z-index: 2;
-    animation: swingRacket 4s infinite ease-in-out;
-}
-.animated-ball {
-    position: absolute;
-    top: 55%;
-    width: 20px;
-    height: 20px;
-    background-color: #ccff00; /* Neon Tennis Ball Yellow-Green */
-    border-radius: 50%;
-    box-shadow: 0 0 8px rgba(255,255,255,0.8);
-    animation: bounceBall 4s infinite ease-in-out;
-}
-@keyframes swingRacket {
-    0%, 100% { left: 5%; transform: scaleX(1); }
-    50% { left: 88%; transform: scaleX(-1); }
-}
-@keyframes bounceBall {
-    0%, 100% { left: 12%; top: 55%; }
-    25% { top: 20%; } /* Mid-air arc left side */
-    50% { left: 85%; top: 55%; }
-    75% { top: 20%; } /* Mid-air arc right side */
+/*-------------------------------------------------------------------------------------------------------------------------------*/
+/* 📱 MOBILE VIEWPORT COMPATIBILITY MEDIA QUERIES (FIX FOR FILE 149691.jpg) */
+@media screen and (max-width: 768px) {
+    .site-header {
+        min-height: auto !important;
+        padding: 15px 15px !important;
+    }
+
+    .header-main-row {
+        flex-direction: column !important;
+        gap: 10px !important;
+        text-align: center;
+    }
+
+    .site-title {
+        font-size: 1.6rem !important;
+    }
+
+    /* Transform navigation layout from rigid tables to adaptive block wrappers */
+    .navigation-bar table,
+    .navigation-bar tr,
+    .navigation-bar td {
+        display: block !important;
+        width: 100% !important;
+    }
+
+    .navigation-bar td {
+        padding: 4px 0 !important;
+    }
+
+    .navigation-bar a {
+        font-size: 1rem !important;
+        padding: 8px !important;
+    }
+
+    /* Outer Wrapper Boundaries */
+    .page-wrapper {
+        width: 96% !important;
+        margin: 10px auto !important;
+        padding: 12px !important;
+    }
+
+    /* Split grids and columns stacked safely vertically */
+    .about-split-section,
+    .enquiry-split-container,
+    .contact-split-layout {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 20px !important;
+    }
+
+    .enquiry-form-side,
+    .contact-form-side,
+    .enquiry-image-side,
+    .contact-text-details {
+        flex: 1 1 100% !important;
+        width: 100% !important;
+    }
+
+    .pricing-table, 
+    .services-table-container {
+        display: block !important;
+        width: 100% !important;
+        overflow-x: auto !important; /* Horizontal swipe container for oversized tables */
+    }
+
+    .hero-section {
+        height: 360px !important;
+    }
+
+    .hero-subtext {
+        font-size: 1.05rem !important;
+    }
 }

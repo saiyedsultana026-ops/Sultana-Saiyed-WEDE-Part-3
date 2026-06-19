@@ -3,12 +3,13 @@ class TennisAcademyPortal {
         // Declaring Parallel arrays
         this.venueTokens = ['frameby', 'wembley', 'sunridge', 'harvest'];
         this.mapLinksURLs = [
-            "https://maps.google.com/?q=Hoerskool+Framesby+Port+Elizabeth", 
-            "https://maps.google.com/?q=Wembley+Tennis+Club+Port+Elizabeth", 
-            "https://maps.google.com/?q=Sunridge+Primary+School+Port+Elizabeth", 
-            "https://maps.google.com/?q=Harvest+Christian+School+Port+Elizabeth"  
+            "https://www.google.com/maps?q=Hoerskool+Framesby+Tennis+Courts", 
+            "https://www.google.com/maps?q=Wembley+Tennis+Club+Port+Elizabeth", 
+            "https://www.google.com/maps?q=Sunridge+Primary+School+Tennis", 
+            "https://www.google.com/maps?q=Harvest+Christian+School+Tennis"  
         ];
     }
+
     init() {
         this.bindFormEvents();
         this.bindMapViewerEvents();
@@ -16,12 +17,12 @@ class TennisAcademyPortal {
         this.initSearchEngineModule();
     }
 
-    /*Module: Form Submission*/
+    /* Module: Form Submission Handler */
     bindFormEvents() {
         const enquiryForm = document.getElementById("tennisEnquiryForm");
         const contactForm = document.getElementById("academyContactForm");
 
-        // SAFETY CHECK: Only listen for form events if they exist on the current page view
+        // Listen for form submissions dynamically if they exist on the current page viewport
         if (enquiryForm) {
             enquiryForm.addEventListener("submit", (e) => this.processFormPipeline(e, "enquiryFormViewport"));
         }
@@ -30,151 +31,174 @@ class TennisAcademyPortal {
         }
     }
 
-    async processFormPipeline(event, viewportId) {
-        event.preventDefault(); 
+    /* Pure JavaScript Validation & Processing Engine */
+    async processFormPipeline(e, viewportId) {
+        e.preventDefault(); // Stop native HTML submission tracking instantly
         
-        const form = event.target;
-        const viewport = document.getElementById(viewportId);
-        const formData = new FormData(form);
-
-        try {
-            const response = await fetch(form.action, {
-                method: form.method,
-                body: formData,
-                headers: { 'Accept': 'application/json' }
-            });
-
-            if (response.ok) {
-                this.renderCourtSuccessCanvas(viewport);
-            } else {
-                alert("Submission processing error. Transaction delayed.");
+        const activeForm = e.target;
+        
+        // 1. PURE JAVASCRIPT VALIDATION SWEEP
+        const formData = new FormData(activeForm);
+        let missingFields = [];
+        let validationPassed = true;
+        
+        // Iteration
+        for (let [name, value] of formData.entries()) {
+            if (!value || value.trim() === "") {
+                missingFields.push(name.charAt(0).toUpperCase() + name.slice(1));
+                validationPassed = false;
             }
-        } catch (error) {
-            alert("Network infrastructure routing timeout.");
         }
+        
+        // Custom JavaScript logic flag gate check
+        if (!validationPassed) {
+            alert(`JavaScript Validation Failed: Please fill in missing data fields -> [ ${missingFields.join(", ")} ]`);
+            return; // Halt execution and submission block right here
+        }
+        
+        // 2. CONTINUE SIMULATED ASYNCHRONOUS PIPELINE IF VALID
+        const viewportContainer = document.getElementById(viewportId);
+        if (!viewportContainer) return;
+        
+        viewportContainer.innerHTML = `
+            <div class="processing-spinner-layer" style="text-align: center; padding: 40px;">
+                <p style="color: #002147; font-weight: bold; font-family: sans-serif;">Asynchronously Processing Submission Engine...</p>
+            </div>
+        `;
+        
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        this.renderCourtSuccessCanvas(viewportContainer);
     }
 
-    /*Module:table tennis animation on contact us page:*/
-    renderCourtSuccessCanvas(targetViewport) {
-        const tableTennisBallMatrix = `
-  🎾🎾🎾  🎾  🎾  🎾🎾🎾  🎾🎾🎾  🎾🎾🎾  🎾🎾🎾  🎾🎾🎾
-  🎾      🎾  🎾  🎾      🎾      🎾      🎾      🎾    
-  🎾🎾🎾  🎾  🎾  🎾      🎾      🎾🎾    🎾🎾    🎾🎾🎾
-      🎾  🎾  🎾  🎾      🎾      🎾      🎾          🎾
-  🎾🎾🎾  🎾🎾  🎾🎾🎾  🎾🎾🎾  🎾🎾🎾  🎾🎾🎾  🎾🎾🎾
-        `;
-
-        targetViewport.innerHTML = `
-            <div class="table-tennis-court animate-popup">
-                <div class="pingpong-center-line"></div>
-                <div class="pingpong-horizontal-net"></div>
-                
-                <div class="court-score-board-overlay">
-                    <div class="ball-font-container">
-                        <div class="tennis-font-row-wrapper">
-                            <pre class="font-pixel-line" style="margin:0; font-family:monospace; font-size:8px; line-height:1.2; color:#ccff00; font-weight:bold;">${tableTennisBallMatrix.trim()}</pre>
-                        </div>
-                    </div>
-                    <h3 class="court-alert-title">SUCCESSFULLY SUBMITTED</h3>
-                    <p class="court-alert-text">Your message packets crossed the table partition net safely and hit our administration desk instantly.</p>
-                    <span class="court-badge-status">Match State: Served 🏓</span>
+    /* Output Dynamic UI Retro Scoreboard Template Overlay Canvas */
+    renderCourtSuccessCanvas(container) {
+        container.innerHTML = `
+            <div class="success-canvas-card animate-popup" style="background: #222222; padding: 25px; border-radius: 8px; border: 4px solid #ffffff; text-align: center; color: #ccff00; font-family: monospace; box-shadow: 0 4px 15px rgba(0,0,0,0.3); margin-top: 15px;">
+                <h3 style="color: #ffffff; margin-bottom: 15px; font-size: 1.4rem;">🎾 TRANSMISSION SUCCESS 🎾</h3>
+                <div style="background: #111111; padding: 15px; border-radius: 4px; margin-bottom: 15px; border: 1px dashed #ccff00;">
+                    <p style="font-size: 1.1rem; letter-spacing: 1px; margin: 5px 0;">MATCH SET STATE: SERVER UP</p>
+                    <p style="font-size: 1.1rem; letter-spacing: 1px; color: #ffffff; margin: 5px 0;">PIPELINE STATUS: 200 OK</p>
                 </div>
+                <p style="color: #ffffff; font-size: 0.95rem;">Your registration has been processed successfully by our JavaScript runtime engine. A coordinator will be in touch shortly.</p>
             </div>
         `;
     }
 
+    /* Module: Parallel Arrays Mapping Engine for Venues */
     bindMapViewerEvents() {
-        const cards = document.querySelectorAll(".location-link-card");
-        if (cards.length === 0) return;
-
-        cards.forEach(card => {
+        const structuralCards = document.querySelectorAll(".location-link-card");
+        structuralCards.forEach(card => {
             card.addEventListener("click", () => {
-                const venueKey = card.getAttribute("data-venue-key");
-                let matchIndex = -1;
-                for (let i = 0; i < this.venueTokens.length; i++) {
-                    if (this.venueTokens[i] === venueKey) {
-                        matchIndex = i;
-                        break;
-                    }
-                }
-
-                if (matchIndex !== -1) {
-                    window.open(this.mapLinksURLs[matchIndex], '_blank');
+                const searchKeyToken = card.getAttribute("data-venue-key");
+                // Locate structural index via parallel lookup array logic
+                const resolvedIndex = this.venueTokens.indexOf(searchKeyToken);
+                
+                if (resolvedIndex !== -1) {
+                    const routingDestination = this.mapLinksURLs[resolvedIndex];
+                    window.open(routingDestination, "_blank");
+                } else {
+                    alert("System Routing Error: Location coordinates token index mismatch.");
                 }
             });
         });
     }
 
-    /*image zoom*/
+    /* Module: Interactive Modal Image Lightbox Zoom Gallery */
     initImageLightboxModule() {
-        const overlay = document.createElement('div');
-        overlay.className = 'image-lightbox-overlay';
-        overlay.innerHTML = `
-            <span class="lightbox-close-btn">×</span>
-            <img src="" alt="Zoom Frame" class="lightbox-enlarged-img" id="lightboxTargetImg">
-        `;
-        document.body.appendChild(overlay);
-        
-        const lightboxImg = document.getElementById('lightboxTargetImg');
-        const allImages = document.querySelectorAll('img');
+        const teamPhotos = document.querySelectorAll(".team-photo");
+        teamPhotos.forEach(photo => {
+            photo.style.cursor = "pointer";
+            photo.addEventListener("click", () => {
+                // Programmatically compile dynamic HTML elements in memory
+                const modalOverlayNode = document.createElement("div");
+                modalOverlayNode.className = "lightbox-modal-container";
+                
+                // Overlay component styling injection rules
+                Object.assign(modalOverlayNode.style, {
+                    position: "fixed",
+                    top: "0",
+                    left: "0",
+                    width: "100%",
+                    height: "100%",
+                    backgroundColor: "rgba(0, 33, 71, 0.95)",
+                    zIndex: "9999",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    cursor: "zoom-out"
+                });
 
-        allImages.forEach(img => {
-            if (img.classList.contains('site-logo')) return;
-            img.style.cursor = 'zoom-in';
-            img.addEventListener('click', () => {
-                lightboxImg.src = img.src;
-                overlay.classList.add('active');
+                const modalImageElement = document.createElement("img");
+                modalImageElement.src = photo.src;
+                modalImageElement.alt = photo.alt;
+                
+                Object.assign(modalImageElement.style, {
+                    maxWidth: "85%",
+                    maxHeight: "85%",
+                    borderRadius: "8px",
+                    border: "5px solid #4cbb17",
+                    boxShadow: "0 10px 30px rgba(0,0,0,0.5)"
+                });
+
+                modalOverlayNode.appendChild(modalImageElement);
+                document.body.appendChild(modalOverlayNode);
+
+                // Tear down dynamic nodes safely upon user trigger exit states
+                modalOverlayNode.addEventListener("click", () => {
+                    modalOverlayNode.remove();
+                });
             });
-        });
-
-        overlay.addEventListener('click', (e) => {
-            if (e.target === overlay || e.target.classList.contains('lightbox-close-btn')) {
-                overlay.classList.remove('active');
-            }
         });
     }
 
-    /*Module:Search enginee:*/
+    /* Module: On-Page Layout Text Node Scraper Engine */
     initSearchEngineModule() {
-        const searchForm = document.getElementById('siteSearchEngine');
-        const searchInput = document.getElementById('searchInputField');
-        
-        if (!searchForm || !searchInput) return;
-        
-        searchForm.addEventListener('submit', (e) => {
+        const searchInputForm = document.getElementById("siteSearchEngine");
+        const searchInputField = document.getElementById("searchInputField");
+
+        if (!searchInputForm || !searchInputField) return;
+
+        searchInputForm.addEventListener("submit", (e) => {
             e.preventDefault();
-            
-            const query = searchInput.value.trim().toLowerCase();
-            if (!query) return;
+            const queryText = searchInputField.value.trim().toLowerCase();
+            if (!queryText) return;
+
+            // Rollback previous highlighted span iterations seamlessly back to text
             const oldHighlights = document.querySelectorAll('.search-highlight');
-            oldHighlights.forEach(el => el.replaceWith(document.createTextNode(el.textContent)));
-            
-            const mainContent = document.querySelector('.page-wrapper');
-            if (!mainContent) return;
-            
-            const walker = document.createTreeWalker(mainContent, NodeFilter.SHOW_TEXT, null, false);
-            let node;
-            
-            while (node = walker.nextNode()) {
-                const text = node.nodeValue.toLowerCase();
-                if (text.includes(query)) {
-                    const parent = node.parentNode;
-                    const origText = node.nodeValue;
-                    const regex = new RegExp(`(${query})`, 'gi');
-                    
-                    const spanWrapper = document.createElement('span');
-                    spanWrapper.innerHTML = origText.replace(regex, '<span class="search-highlight">$1</span>');
-                    
-                    parent.replaceChild(spanWrapper, node);
-                    spanWrapper.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    return; 
+            oldHighlights.forEach(element => {
+                element.replaceWith(document.createTextNode(element.textContent));
+            });
+
+            const contentWrapperTree = document.querySelector('.page-wrapper');
+            if (!contentWrapperTree) return;
+
+            // Crawl layout string nodes programmatically via specific safe TreeWalker API structures
+            const treeCrawler = document.createTreeWalker(contentWrapperTree, NodeFilter.SHOW_TEXT, null, false);
+            let activeTextNode;
+
+            while (activeTextNode = treeCrawler.nextNode()) {
+                const lowercaseTextFragment = activeTextNode.nodeValue.toLowerCase();
+                
+                if (lowercaseTextFragment.includes(queryText)) {
+                    const structuralParentNode = activeTextNode.parentNode;
+                    const originalRawContent = activeTextNode.nodeValue;
+                    const regexMatchPattern = new RegExp(`(${queryText})`, 'gi');
+
+                    const safeContainerSpan = document.createElement('span');
+                    safeContainerSpan.innerHTML = originalRawContent.replace(regexMatchPattern, '<span class="search-highlight">$1</span>');
+
+                    structuralParentNode.replaceChild(safeContainerSpan, activeTextNode);
+                    safeContainerSpan.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    return;
                 }
             }
-            alert(`No content instances matching "${searchInput.value}" found on this page.`);
+            alert(`No matches found for: "${searchInputField.value}" on this layout wrapper view.`);
         });
     }
 }
+
+// Global invocation baseline wrapper sequence setup tracking instantiation structures
 document.addEventListener("DOMContentLoaded", () => {
-    const app = new TennisAcademyPortal();
-    app.init();
+    const portalCore = new TennisAcademyPortal();
+    portalCore.init();
 });
