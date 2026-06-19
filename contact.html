@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<!--Header for all pages-->
     <header class="site-header">
         <div class="header-main-row">
             <img src="images/evolve tennis academy logo.jpg" alt="Evolve Tennis Academy Logo" class="site-logo">
@@ -28,56 +27,60 @@
                 </tr>
             </table>
         </nav>
-<!--SEO-->
-<form class="header-search-form" id="siteSearchEngine">
-    <div class="search-input-wrapper">
-        <input type="search" id="searchInputField" class="site-search-input" placeholder="Search this page layout..." required>
-        <button type="submit" class="btn-search-submit">Search</button>
-    </div>
-</form>
-</form>
     </header>
 
     <main class="page-wrapper">
-        <div class="contact-hero-banner">
-            <img src="images/tennis banner.jpg" alt="Tennis Training Banner" class="contact-banner-img">
-        </div>
+        <section class="section-center-title">
+            <h2 class="capsule-heading">Contact Us</h2>
+        </section>
 
-        <section class="contact-split-layout">
-            <div class="contact-text-details">
-                <h2 class="capsule-heading">Contact Information</h2>
-                <div class="info-box">
-                    <p><strong>Phone:</strong> 073 298 6616</p>
-                    <p><strong>Email:</strong> info@evolvetennis.co.za</p>
-                    <p><strong>Operating Hours:</strong> Mon - Sat: 07:00 AM - 06:00 PM</p>
-                </div>
-            </div>
-            <!--Form-->
-            <div class="contact-form-side" id="contactFormViewport">
-                <h3 class="capsule-heading">Drop Us A Message</h3>
-                <form action="https://formspree.io/f/xaqzkozb" method="POST" class="academy-form" id="academyContactForm">
+        <div id="contactFormViewport"></div>
+
+        <div class="contact-split-layout">
+            <div class="contact-form-side">
+                <form id="academyContactForm">
                     <p class="form-group">
-                        <label for="contactName">Name:</label>
-                        <input type="text" id="contactName" name="name" required placeholder="Your Name">
+                        <label for="fullName">Full Name:</label>
+                        <input type="text" id="fullName" name="fullName">
                     </p>
+
                     <p class="form-group">
                         <label for="contactEmail">Email Address:</label>
-                        <input type="email" id="contactEmail" name="_replyto" required placeholder="yourname@example.com">
+                        <input type="email" id="contactEmail" name="contactEmail">
                     </p>
+
                     <p class="form-group">
-                        <label for="contactMessage">Your Message:</label>
-                        <textarea id="contactMessage" name="message" required placeholder="How can we help you today?" rows="4"></textarea>
+                        <label for="messageSubject">Subject Heading:</label>
+                        <input type="text" id="messageSubject" name="messageSubject">
                     </p>
+
+                    <p class="form-group">
+                        <label for="userMessage">Message / General Inquiries:</label>
+                        <textarea id="userMessage" name="userMessage" rows="5" style="width:100%; border:1px solid #ccc; border-radius:4px; padding:10px;"></textarea>
+                    </p>
+
                     <p class="form-submit-row">
                         <button type="submit" class="btn-submit">Send Message</button>
                     </p>
                 </form>
             </div>
-        </section>
-<!--Location -->
+
+            <div class="contact-text-details">
+                <section class="contact-info-section">
+                    <div class="info-box">
+                        <p><strong>Admin Office:</strong> info@evolvetennis.co.za</p>
+                        <p><strong>Head Coordinator:</strong> +27 (0) 83 456 7891</p>
+                        <p><strong>Operating Hours:</strong> Mon - Sat: 08:00 &mdash; 18:00</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+
         <section class="locations-section">
-            <h2 class="capsule-heading">Our Training Locations</h2>
-            <p class="location-instruction">Click on any venue link below to launch its interactive Google Map routing layout in a new window tab:</p>
+            <h2 class="section-center-title capsule-heading">Our Training Locations</h2>
+            <p class="location-instruction" style="text-align: center; margin-bottom: 15px; font-weight: bold; color: #002147;">
+                Click on any venue link below to launch its interactive Google Map routing layout in a new window tab:
+            </p>
             
             <div class="locations-grid">
                 <div class="location-link-card" data-venue-key="frameby">
@@ -94,18 +97,17 @@
                 </div>
             </div>
         </section>
- <!-- Animation-->
+
         <section class="animation-section">
             <div class="tennis-animation-container">
-                <!-- Moving Racket Element -->
                 <div class="animated-racket">🎾</div>
-                <!-- Moving Ball Element -->
                 <div class="animated-ball"></div>
             </div>
         </section>
+    </main>
 
     <footer class="site-footer">
-        <p>© by <i>Better-In Marketing</i></p>
+        <p>&copy; by <i>Better-In Marketing</i></p>
     </footer>
     <script src="js/main.js"></script>
 </body>

@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<!--Header section same across all pages-->
     <header class="site-header">
         <div class="header-main-row">
             <img src="images/evolve tennis academy logo.jpg" alt="Evolve Tennis Academy Logo" class="site-logo">
@@ -28,65 +27,48 @@
                 </tr>
             </table>
         </nav>
-<!--SEO -->
-<form class="header-search-form" id="siteSearchEngine">
-    <div class="search-input-wrapper">
-        <input type="search" id="searchInputField" class="site-search-input" placeholder="Search this page layout..." required>
-        <button type="submit" class="btn-search-submit">Search</button>
-    </div>
-</form>
     </header>
 
     <main class="page-wrapper">
+        <section class="section-center-title">
+            <h2 class="capsule-heading">Make An Enquiry</h2>
+        </section>
+
+        <div id="enquiryFormViewport"></div>
+
         <section class="enquiry-split-container">
-            <!--Capsule heading-->
-            <div class="enquiry-form-side" id="enquiryFormViewport">
-                <h2 class="capsule-heading">Enquiry Form</h2>
-                
-                <form action="https://formspree.io/f/xaqzkozb" method="POST" class="academy-form" id="tennisEnquiryForm">
+            <div class="enquiry-form-side">
+                <form id="tennisEnquiryForm">
                     <p class="form-group">
-                        <label for="name">Name:</label>
-                        <input type="text" id="name" name="name" required placeholder="Your Name">
+                        <label for="studentName">Student Name & Surname:</label>
+                        <input type="text" id="studentName" name="studentName">
                     </p>
 
                     <p class="form-group">
-                        <label for="surname">Surname:</label>
-                        <input type="text" id="surname" name="surname" required placeholder="Your Surname">
+                        <label for="cellNumber">Cell Number:</label>
+                        <input type="text" id="cellNumber" name="cellNumber">
                     </p>
 
                     <p class="form-group">
-                        <label for="phone">Phone Number:</label>
-                        <input type="tel" id="phone" name="phone" required placeholder="e.g. 073 298 6616">
+                        <label for="emailAddress">Email Address:</label>
+                        <input type="email" id="emailAddress" name="emailAddress">
                     </p>
 
                     <p class="form-group">
-                        <label for="email">Email Address:</label>
-                        <input type="email" id="email" name="_replyto" required placeholder="name@example.com">
-                    </p>
-
-                    <p class="form-group">
-                        <label for="club">Which Club</label>
-                        <select id="club" name="club">
-                            <option value="Hoërskool Frameby Courts">Hoërskool Frameby Courts</option>
-                            <option value="Wembley Tennis Club">Wembley Tennis Club</option>
-                            <option value="Sunridge Primary School">Sunridge Primary School</option>
-                            <option value="Harvest Christian School">Harvest Christian School</option>
-                        </select>
-                    </p>
-
-                    <p class="form-group">
-                        <label for="level">Current Player Level:</label>
-                        <select id="level" name="level">
-                            <option value="Beginner">Beginner</option>
-                            <option value="Basics">Basics</option>
-                            <option value="Intermediate">Intermediate</option>
-                            <option value="Advanced">Advanced</option>
+                        <label for="programSelection">Select Program Option:</label>
+                        <select id="programSelection" name="programSelection">
+                            <option value="">-- Select Option --</option>
+                            <option value="Junior Tennis">Junior Tennis Core (Ages 4-13)</option>
+                            <option value="High School Academy">High School Pro Academy</option>
+                            <option value="Adult Private">Adult Elite Individual Lessons</option>
+                            <option value="Performance Squads">Performance Regional Squads</option>
                         </select>
                     </p>
 
                     <p class="form-group">
                         <label for="coach">Select a Coach:</label>
                         <select id="coach" name="coach">
+                            <option value="">-- Select Option --</option>
                             <option value="Danie Van Zyl">Danie Van Zyl</option>
                             <option value="Kianu Jonker">Kianu Jonker</option>
                             <option value="Leila Nel">Leila Nel</option>
@@ -102,11 +84,10 @@
                     </p>
                 </form>
             </div>
-            <!--picture nect to form-->
+
             <div class="enquiry-image-side">
                 <img src="images/evolve Tennis Academy enqury page.jpg" alt="Evolve Tennis Academy Court Training" class="enquiry-side-img">
             </div>
-
         </section>
     </main>
 
